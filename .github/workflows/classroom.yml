@@ -12,11 +12,6 @@ jobs:
     runs-on: ubuntu-latest
     if: github.actor != 'github-classroom[bot]'
     steps:
-    - name: Setup Java JDK
-      uses: actions/setup-java@v4
-      with:
-        distribution: 'oracle'
-        java-version: '17'
     - name: Checkout code
       uses: actions/checkout@v4
     - name: MVN Test
