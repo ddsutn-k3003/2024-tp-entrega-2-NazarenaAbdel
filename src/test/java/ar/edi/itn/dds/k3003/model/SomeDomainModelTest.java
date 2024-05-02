@@ -2,7 +2,7 @@ package ar.edi.itn.dds.k3003.model;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import ar.edu.utn.dds.k3003.model.SomeDomainObject;
+import ar.edu.utn.dds.k3003.SomeDomainObject;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

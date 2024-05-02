@@ -1,6 +1,6 @@
-package ar.edu.utn.dds.k3003.model.exceptions;
+package ar.edu.utn.dds.k3003.exceptions;
 
-import ar.edu.utn.dds.k3003.model.SomeDomainObject;
+import ar.edu.utn.dds.k3003.SomeDomainObject;
 import lombok.Getter;
 
 @Getter

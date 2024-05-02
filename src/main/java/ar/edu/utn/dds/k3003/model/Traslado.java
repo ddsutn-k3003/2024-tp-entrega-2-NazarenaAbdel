@@ -1,6 +1,7 @@
 package ar.edu.utn.dds.k3003.model;
 
 import ar.edu.utn.dds.k3003.facades.dtos.EstadoTrasladoEnum;
+import ar.edu.utn.dds.k3003.model.Ruta;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -20,6 +21,7 @@ public class Traslado {
             this.qrVianda = qr;
             this.estado = estado;
             this.fechaTraslado = fecha;
+            this.ruta = ruta;
     }
 
 
