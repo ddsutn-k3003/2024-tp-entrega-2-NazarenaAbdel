@@ -1,0 +1,46 @@
+name: Autograding Tests
+'on':
+- push
+- workflow_dispatch
+- repository_dispatch
+permissions:
+  checks: write
+  actions: read
+  contents: read
+jobs:
+  run-autograding-tests:
+    runs-on: ubuntu-latest
+    if: github.actor != 'github-classroom[bot]'
+    steps:
+    - name: Setup Java JDK
+      uses: actions/setup-java@v4
+      with:
+        distribution: 'oracle'
+        java-version: '17'
+    - name: Checkout code
+      uses: actions/checkout@v4
+    - name: MVN Test
+      id: mvn-test
+      uses: education/autograding-command-grader@v1
+      with:
+        test-name: MVN Test
+        setup-command: mvn clean test-compile
+        command: mvn test
+        timeout: 10
+        max-score: 1
+    - name: Evaluator
+      id: evaluator
+      uses: education/autograding-command-grader@v1
+      with:
+        test-name: Evaluator
+        setup-command: mvn clean compile
+        command: mvn exec:java -Dexec.mainClass="ar.edu.utn.dds.k3003.Evaluador"
+        timeout: 10
+        max-score: 2
+    - name: Autograding Reporter
+      uses: education/autograding-grading-reporter@v1
+      env:
+        MVN-TEST_RESULTS: "${{steps.mvn-test.outputs.result}}"
+        EVALUATOR_RESULTS: "${{steps.evaluator.outputs.result}}"
+      with:
+        runners: mvn-test,evaluator
