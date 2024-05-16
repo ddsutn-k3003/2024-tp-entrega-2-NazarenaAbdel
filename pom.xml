@@ -51,6 +51,7 @@
       <version>2.16.0</version>
     </dependency>
 
+
   <dependency>
     <groupId>com.squareup.retrofit2</groupId>
     <artifactId>retrofit</artifactId>
@@ -93,6 +94,12 @@
       <artifactId>dds-eval-tp2024</artifactId>
       <version>0.0.18</version>
     </dependency>
+
+  <dependency>
+    <groupId>org.postgresql</groupId>
+    <artifactId>postgresql</artifactId>
+    <version>42.2.14</version>
+  </dependency>
 
   </dependencies>
 

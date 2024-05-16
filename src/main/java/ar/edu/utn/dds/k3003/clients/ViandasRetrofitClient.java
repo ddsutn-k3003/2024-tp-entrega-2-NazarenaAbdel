@@ -28,3 +28,5 @@ public interface ViandasRetrofitClient {
     @PATCH("viandas/{qrVianda}")
     Call<ViandaDTO> modificarHeladeraVianda(@Path("qrVianda") String qrVianda, @Path("idHeladera") Integer idHeladera);
 }
+
+

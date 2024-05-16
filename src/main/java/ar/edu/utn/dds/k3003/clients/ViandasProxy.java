@@ -5,6 +5,7 @@ import ar.edu.utn.dds.k3003.facades.FachadaViandas;
 import ar.edu.utn.dds.k3003.facades.dtos.EstadoViandaEnum;
 import ar.edu.utn.dds.k3003.facades.dtos.ViandaDTO;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import io.javalin.http.HttpStatus;
 
 import java.io.IOException;
@@ -19,6 +20,16 @@ public class ViandasProxy implements FachadaViandas {
 
     private final String endpoint;
     private final ViandasRetrofitClient service;
+    private static ViandasProxy instancia = null;
+    private static ObjectMapper objectMapper = new ObjectMapper().registerModule(new JavaTimeModule());;
+
+    public static ViandasProxy getInstancia(){
+        if(instancia == null){
+            instancia = new ViandasProxy(objectMapper);
+        }
+
+        return instancia;
+    }
 
     public ViandasProxy(ObjectMapper objectMapper) {
 
@@ -35,6 +46,7 @@ public class ViandasProxy implements FachadaViandas {
     }
 
     @Override
+
     public ViandaDTO agregar(ViandaDTO viandaDTO) {
 
         Call<ViandaDTO> requestCreacionVianda = service.agregarVianda(viandaDTO);
