@@ -89,11 +89,11 @@
       <version>${mockito.version}</version>
     </dependency>
 
-    <dependency>
-      <groupId>com.github.ezequieljsosa</groupId>
-      <artifactId>dds-eval-tp2024</artifactId>
-      <version>0.0.18</version>
-    </dependency>
+  <dependency>
+    <groupId>com.github.ezequieljsosa</groupId>
+    <artifactId>dds-eval-tp2024</artifactId>
+    <version>0.0.19</version>
+  </dependency>
 
   <dependency>
     <groupId>org.postgresql</groupId>
