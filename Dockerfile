@@ -2,7 +2,7 @@
 #
 # Build stage
 #
-FROM maven:3.8.6-openjdk-18 AS build
+FROM maven:3.8.6-openjdk-17 AS build
 COPY . .
 RUN mvn clean package assembly:single -DskipTests
 
@@ -13,7 +13,7 @@ FROM openjdk:17-jdk-slim
 COPY --from=build /target/TPDDSApp.jar TPDDSApp.jar
 # ENV PORT=8080
 EXPOSE 8080
-ENTRYPOINT ["java","-jar","TPDDSApp.jar"]
+ENTRYPOINT ["java","-classpath","TPDDSApp.jar","ar.edu.utn.dds.k3003.app.WebApp"]
 
 
 
