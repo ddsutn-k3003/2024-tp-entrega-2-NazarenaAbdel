@@ -30,7 +30,6 @@ import static ar.edu.utn.dds.k3003.app.WebApp.configureObjectMapper;
             }).start(port);
 
             app.get("/viandas/{qr}", ViandaTestServer::obtenerVianda);
-            app.post("/viandas", ViandaTestServer::asignar);
             app.post("/pepe", ViandaTestServer::trasladoTest);
         }
 
@@ -41,17 +40,6 @@ import static ar.edu.utn.dds.k3003.app.WebApp.configureObjectMapper;
             context.json(trasladoDTO);
         }
 
-        public static void asignar(Context context) {
-            try {
-                ViandasProxy instanciaViandasApp = ViandasProxy.getInstancia();
-                instanciaViandasApp.agregar(context.bodyAsClass(ViandaDTO.class));
-                context.json(instanciaViandasApp);
-
-            } catch (NoSuchElementException e) {
-                context.result(e.getLocalizedMessage());
-                context.status(HttpStatus.BAD_REQUEST);
-            }
-        }
 
         private static void obtenerVianda(Context context) {
 
