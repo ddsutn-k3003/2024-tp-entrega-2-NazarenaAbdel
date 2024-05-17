@@ -17,6 +17,6 @@ RUN ls -l
 
 # ENV PORT=8080
 EXPOSE 8080
-ENTRYPOINT ["java","-classpath","logistica.jar","ar.edu.utn.dds.k3003.app.WebApp"]
+ENTRYPOINT ["java","-jar","logistica.jar"]
 
 
