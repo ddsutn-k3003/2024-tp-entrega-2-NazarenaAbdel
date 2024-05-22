@@ -1,24 +1,25 @@
 package ar.edu.utn.dds.k3003.clients;
 
+import ar.edu.utn.dds.k3003.app.Fachada;
+import ar.edu.utn.dds.k3003.facades.FachadaColaboradores;
+import ar.edu.utn.dds.k3003.facades.FachadaHeladeras;
+import ar.edu.utn.dds.k3003.facades.FachadaLogistica;
+import ar.edu.utn.dds.k3003.facades.FachadaViandas;
 import ar.edu.utn.dds.k3003.facades.dtos.EstadoViandaEnum;
+import ar.edu.utn.dds.k3003.webmocks.ViandaTestServer;
 import ar.edu.utn.dds.k3003.facades.dtos.ViandaDTO;
 import net.bytebuddy.asm.Advice;
 
 import java.time.LocalDateTime;
 
-public class ViandasMain {
-     public static void main(String[] args) {
+public class ViandasMain{
+    private static FachadaViandas fachadaViandas;
+    private static FachadaHeladeras fachadaHeladeras;
+    private static FachadaColaboradores fachadaColaboradores;
+    private static FachadaLogistica fachadaLogistica;
+    public static void main(String[] args) throws Exception {
 
-         //System.out.println(LocalDateTime.now());
-
-         ViandasProxy instanciaViandasApp = ViandasProxy.getInstancia();
-
-         System.out.println("agregar una vianda");
-
-         ViandaDTO vianda = new ViandaDTO("1234jfowj33", LocalDateTime.of(2024, 5, 15, 12, 0), EstadoViandaEnum.DEPOSITADA, 12L, 2);
-
-         instanciaViandasApp.agregar(vianda);
-
+        ViandaTestServer.main(new String[]{});
 
 
     }
