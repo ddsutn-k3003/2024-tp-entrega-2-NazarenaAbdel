@@ -42,10 +42,10 @@ jobs:
           MAVEN_OPTS: -Dmaven.repo.local=.m2/repository
       - name: Espera que el WebApp esté levantado
         run: |
-          timeout 60 sh -c 'until curl --output /dev/null --silent --head --fail http://localhost:8080; do
-            printf "."
+          until curl --output /dev/null --silent --head --fail http://localhost:8080; do
+            printf '.'
             sleep 5
-          done'
+          done
       - name: Evaluador de Entrega 1
         id: evaluator
         uses: education/autograding-command-grader@v1
@@ -75,7 +75,7 @@ jobs:
         with:
           test-name: EvaluatorAPI
           setup-command: mvn clean compile
-          command: mvn exec:java -Dexec.mainClass="ar.edu.utn.dds.k3003.EvaluadorAPI" -Dexec.args="http://localhost:8080 ${{ env.EVALUATOR_API_ARG }}"
+          command: mvn exec:java -D"exec.mainClass=ar.edu.utn.dds.k3003.EvaluadorAPI" -D"exec.args=http://localhost:8080 ${{ env.EVALUATOR_API_ARG }}"
           timeout: 10
           max-score: 1
 
