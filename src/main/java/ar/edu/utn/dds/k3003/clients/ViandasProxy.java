@@ -51,41 +51,20 @@ public class ViandasProxy implements FachadaViandas {
 
     public ViandaDTO agregar(ViandaDTO viandaDTO) {
 
-        Call<ViandaDTO> requestCreacionVianda = service.agregarVianda(viandaDTO);
-
-        try {
-            Response<ViandaDTO> response = requestCreacionVianda.execute();
-            if (response.isSuccessful()) {
-                return response.body();
-            } else {
-                throw new NoSuchElementException("no se pudo crear la vianda");
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-            return null;
-        }
+        return null;
     }
 
     @Override
-    public ViandaDTO modificarEstado(String s, EstadoViandaEnum estadoViandaEnum)
-            throws NoSuchElementException {
-        try {
-            Response<ViandaDTO> response = service.modificarEstadoVianda(s,estadoViandaEnum).execute();
-            if (response.isSuccessful()) {
-                return response.body();
-            } else if (response.code() == HttpStatus.NOT_FOUND.getCode()) {
-                throw new NoSuchElementException("No se encontró la vianda con el código QR: " + s);
-            }else {
-                throw new NoSuchElementException("no se pudo modificar el estado de la vianda");
-            }
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+    public ViandaDTO modificarEstado(String s, EstadoViandaEnum estadoViandaEnum){
+       ViandaDTO viandaDto = this.buscarXQR(s);
+       viandaDto.setEstado(estadoViandaEnum);
 
+       return viandaDto;
     }
 
     @Override
     public List<ViandaDTO> viandasDeColaborador(Long aLong, Integer integer, Integer integer1)
+            //busca todas las viandas del colaborador
             throws NoSuchElementException {
         try {
             Response<List<ViandaDTO>> response = service.buscarViandasColaborador(aLong, integer, integer1).execute();

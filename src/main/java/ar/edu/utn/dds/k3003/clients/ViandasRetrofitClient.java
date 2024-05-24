@@ -19,12 +19,6 @@ public interface ViandasRetrofitClient {
     @GET("/viandas/{qr}/vencida")
     Call<Boolean> viandaVencida(@Path("qr") String qr);
 
-    @POST("/viandas/")
-    Call<ViandaDTO> agregarVianda(@Body ViandaDTO viandaDTO);
-
-    @PATCH("viandas/{qrVianda}")
-    Call<ViandaDTO> modificarEstadoVianda(@Path("qrVianda") String qrVianda, @Path("nuevoEstado") EstadoViandaEnum nuevoEstado);
-
     @PATCH("viandas/{qrVianda}")
     Call<ViandaDTO> modificarHeladeraVianda(@Path("qrVianda") String qrVianda, @Path("idHeladera") Integer idHeladera);
 }
