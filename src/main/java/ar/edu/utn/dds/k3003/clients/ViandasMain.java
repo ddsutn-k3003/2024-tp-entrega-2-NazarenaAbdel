@@ -13,10 +13,7 @@ import net.bytebuddy.asm.Advice;
 import java.time.LocalDateTime;
 
 public class ViandasMain{
-    private static FachadaViandas fachadaViandas;
-    private static FachadaHeladeras fachadaHeladeras;
-    private static FachadaColaboradores fachadaColaboradores;
-    private static FachadaLogistica fachadaLogistica;
+
     public static void main(String[] args) throws Exception {
 
         ViandaTestServer.main(new String[]{});

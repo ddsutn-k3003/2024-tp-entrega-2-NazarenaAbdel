@@ -23,15 +23,6 @@ public class ViandasProxy implements FachadaViandas {
     private final String endpoint;
     private final ViandasRetrofitClient service;
     private static ViandasProxy instancia = null;
-    private static ObjectMapper objectMapper = new ObjectMapper().registerModule(new JavaTimeModule());;
-
-    public static ViandasProxy getInstancia(){
-        if(instancia == null){
-            instancia = new ViandasProxy(objectMapper);
-        }
-
-        return instancia;
-    }
 
     public ViandasProxy(ObjectMapper objectMapper) {
 

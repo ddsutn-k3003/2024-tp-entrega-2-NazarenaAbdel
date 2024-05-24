@@ -17,8 +17,11 @@ public class WebApp {
     public static void main(String[] args) {
 
         var env = System.getenv();
+        var URL_VIANDAS = env.get("URL_VIANDAS");
+
         var objectMapper = createObjectMapper();
         var fachada = new Fachada();
+
         fachada.setViandasProxy(new ar.edu.utn.dds.k3003.clients.ViandasProxy(objectMapper));
 
         var port = Integer.parseInt(env.getOrDefault("PORT", "8080"));
